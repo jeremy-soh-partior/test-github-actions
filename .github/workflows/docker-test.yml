@@ -28,7 +28,8 @@ jobs:
       # Login to JFrog Artifactory
       - name: Run a multi-line script
         env: 
+          URL: ${{ secrets.JFROG_REPO_URL }}
           USERNAME: ${{ secrets.JFROG_REPO_USERNAME }}
           PASSWORD: ${{ secrets.JFROG_REPO_PASSWORD }}
         run: |
-          docker login --username $USERNAME --password $PASSWORD
+          docker login $URL --username $USERNAME --password $PASSWORD
